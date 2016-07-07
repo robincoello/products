@@ -25,6 +25,7 @@ https://pypi.python.org/pypi/setuptools
 
 ```
 git clone https://github.com/roencosah/products.git
+
 ```
 
 Then,
@@ -32,7 +33,8 @@ Then,
 ###Change folder
 
 ```
-$ cd /productos`
+$ cd /productos
+```
 
 ###Run
 ```
