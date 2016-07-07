@@ -1,13 +1,15 @@
 import scrapy
 
-class ProductosSpider(scrapy.Spider):
+class ProductosSpider(scrapy.Spider):    
     name = "productos"
-    allowed_domains = ["nanotechproject.org"]
-    
-    
+    allowed_domains = ["nanotechproject.org"]  		
     start_urls = [
-        "http://www.nanotechproject.org/cpi/products/"
+        "http://www.nanotechproject.org/cpi/products/",        
     ]
+    for x in range(1,75):
+		print x
+		start_urls.append("http://www.nanotechproject.org/cpi/products/page" + str(x));  
+		  
 
     def parse(self, response):
         filename = 'pro.txt'
@@ -19,7 +21,7 @@ class ProductosSpider(scrapy.Spider):
 			title = sel.xpath('a/text()').extract()
 			link = sel.xpath('a/@href').extract()
 			desc = sel.xpath('text()').extract()
-			print title, link, desc       
-			file.writelines(link)	
+			print title, link, desc       			
+			file.writelines(link)				
 			file.writelines('\n')			   	
         file.close()
