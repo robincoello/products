@@ -13,15 +13,14 @@ class ProductosSpider(scrapy.Spider):
 
     def parse(self, response):
         filename = 'pro.txt'
-        scraped = response.xpath("//h5/a").extract()
-        print scraped
         print '----------------------------------------------'
         file = open(filename, 'rw+')  
+        file.seek(0,2)   
         for sel in response.xpath('//h5'):
-			title = sel.xpath('a/text()').extract()
+			#title = sel.xpath('a/text()').extract()
 			link = sel.xpath('a/@href').extract()
-			desc = sel.xpath('text()').extract()
-			print title, link, desc       			
+			#desc = sel.xpath('text()').extract()			
+			print link  			
 			file.writelines(link)				
-			file.writelines('\n')			   	
-        file.close()
+			file.writelines('\n')					  
+	file.close()
